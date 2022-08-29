@@ -1,0 +1,15 @@
+<div class="section">
+  <app-table *ngIf="dataSource && dataSource.length"
+    [tableHeaders]="tableHeaders"
+    [pdfHeaders]="pdfHeaders"
+    [dataSource]="dataSource"
+    [title]="'Cursos'"
+    [buttonAddLabel]="'Adicionar Curso'"
+    [buttonAddUrl]="'/courses/add'"
+    [service]="_coursesService"
+    (editEventEmitter)="edit($event)"
+    (viewDetailEventEmitter)="viewDetail($event)"
+  ></app-table>
+</div>
+
+<app-detail *ngIf="course" [item]="course" [title]="'Alunos'" [redirectTo]="'/students'"></app-detail>

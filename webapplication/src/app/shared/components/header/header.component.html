@@ -1,0 +1,16 @@
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a #navBurger (click)="toggleNavbar()" role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div  #navMenu id="navbarMenu" class="navbar-menu">
+    <div class="navbar navbar-start">
+      <a class="navbar-item" routerLink="/"> <i class="fas fa-home-user"></i></a>
+      <a class="navbar-item" routerLink="/students"> Alunos </a>
+      <a class="navbar-item" routerLink="/courses"> Cursos </a>
+    </div>
+  </div>

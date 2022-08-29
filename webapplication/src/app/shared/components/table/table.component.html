@@ -1,0 +1,58 @@
+<div class="table-container">
+  <div class="section">
+    <div class="field is-grouped is-flex-wrap-wrap">
+      <span class="title is-3 control is-expanded">
+       {{ title }}
+      </span>
+      <div class="buttons are-small is-flex is-justify-content-space-between">
+        <button class="button is-rounded is-info is-outlined" [routerLink]="buttonAddUrl">
+          <span class="icon">
+            <i class="fa-regular fa-2x fa-plus"></i>
+          </span>
+          <span> {{ buttonAddLabel }} </span>
+        </button>
+
+        <button class="button is-rounded is-danger is-inverted" (click)="exportToPdf()">
+          <span class="icon">
+            <i class="fa-regular fa-2x fa-file-pdf"></i>
+          </span>
+        </button>
+
+       </div>
+    </div>
+  </div>
+  <table class="table is-hoverable is-fullwidth">
+    <thead>
+      <tr class="custom-font">
+        <th *ngFor="let title of tableHeaders"> {{ title }} </th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of dataSource" [ngClass]="{'is-selected': item === itemSelected}" (click)="itemSelected = item" class="m-3">
+        <td> {{ item[keys[0]] }} </td>
+        <td> {{ item[keys[1]] }} </td>
+        <td>
+          <div class="icon-text">
+            <a class="icon has-text-info" title="Detalhes" (click)="view(item)">
+              <i class="fas fa-eye"></i>
+            </a>
+            <a class="icon has-text-primary" title="Editar" (click)="edit(item)">
+              <i class="fas fa-pencil"></i>
+            </a>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="section is-desktop">
+  <div class="columns" *ngIf="!dataSource && !(loading$ | async)">
+    <div class="column is-half is-offset-one-quarter">
+      <div class="box">
+        <p class="title is-5">Nenhum registro encontrado.</p>
+        <p class="subtitle">Para cadastrar um aluno clique <a routerLink="/students/add">aqui</a>.</p>
+      </div>
+    </div>
+  </div>
+</div>

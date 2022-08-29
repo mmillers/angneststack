@@ -1,0 +1,27 @@
+<div class="modal" [ngClass]="{'is-active': item }" *ngIf="item && keys.length">
+  <div class="modal-background"></div>
+  <div class="modal-card modal-mh">
+    <section class="modal-card-body">
+      <div class="is-flex is-justify-content-flex-end">
+        <button class="delete" aria-label="close" (click)="item = null"></button>
+      </div>
+      <h1 class="title is-4 mb-3"> {{ title }} </h1>
+      <div class="list">
+        <div class="list-item">
+          <div class="list-item-content is-flex is-justify-content-flex-start is-align-items-center" *ngFor="let info of item[keys[keys.length-1]]">
+            <div class="list-item-controls m-1">
+              <div class="buttons">
+                <button class="button is-primary is-inverted" (click)="redirect(info.code)">
+                  <span class="icon is-small">
+                    <i class="fas fa-pencil-alt"></i>
+                  </span>
+                </button>
+              </div>
+            </div>
+            <div class="list-item-title" appInfoDetail [item]="info" > </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

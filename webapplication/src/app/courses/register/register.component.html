@@ -1,0 +1,92 @@
+<div class="container mt-5">
+  <form [formGroup]="form">
+    <div class="field">
+      <label class="label">Descrição</label>
+      <div class="control">
+        <input
+          class="input"
+          placeholder="Descrição do curso"
+          formControlName="description"
+          [ngClass]="{'is-danger': form.controls.description.errors && form.controls.description.dirty}"
+        >
+      </div>
+      <div *ngIf="form.controls.description.dirty">
+        <p
+          class="help is-danger"
+          *ngIf="form.controls.description.getError('maxlength')"
+        >
+          Máximo de 50 caracteres
+        </p>
+        <p
+          class="help is-danger"
+          *ngIf="form.controls.description.getError('required')"
+        >
+          Campo Obrigatório
+        </p>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Ementa</label>
+      <div class="control">
+        <textarea
+          class="textarea"
+          placeholder="Ementa do curso"
+          rows="10"
+          formControlName="program"
+          [ngClass]="{'is-danger': form.controls.program.errors && form.controls.program.dirty}"
+        >
+        </textarea>
+      </div>
+      <div *ngIf="form.controls.program.dirty">
+        <p
+          class="help is-danger"
+          *ngIf="form.controls.program.getError('maxlength')"
+        >
+          Máximo de 4000 caracteres
+        </p>
+        <p
+          class="help is-danger"
+          *ngIf="form.controls.program.getError('required')"
+        >
+          Campo Obrigatório
+        </p>
+      </div>
+    </div>
+
+    <nav class="panel mh scroll" formArrayName="students" *ngIf="form.controls.code.value">
+      <div class="panel-heading is-flex is-justify-content-space-between is-align-items-center">
+          Alunos
+        <p class="buttons">
+          <button class="button is-info is-outlined" (click)="enrollStudent()">
+            <span>Matricular Aluno</span>
+            <span class="icon is-small">
+              <i class="fas fa-plus"></i>
+            </span>
+          </button>
+        </p>
+      </div>
+      <ng-container *ngFor="let studentForm of students.controls; let i = index">
+        <ng-container [formGroupName]="i">
+          <a class="panel-block is-active">
+            <button class="button is-danger is-inverted mr-3" (click)="remove(i, studentForm.value.code)">
+              <span class="icon is-small">
+                <i class="fas fa-trash"></i>
+              </span>
+            </button>
+            <a [routerLink]="'/students/'+ studentForm.value.code">
+              {{studentForm.value.name }}
+            </a>
+          </a>
+        </ng-container>
+      </ng-container>
+    </nav>
+
+    <div class="mt-3">
+      <app-button (saveEventEmitter)="save()"></app-button>
+    </div>
+  </form>
+</div>
+
+<app-enroll-students-in-courses *ngIf="showEnrollStudentInCourses" (closeEventEmitter)="enrollStudent()" (saveEventEmitter)="saveNewStudents($event)" >
+</app-enroll-students-in-courses>

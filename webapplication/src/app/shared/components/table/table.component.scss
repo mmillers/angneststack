@@ -1,0 +1,11 @@
+.table td {
+  padding: 1rem;
+
+  a {
+    margin-right: 0.3rem;
+  }
+}
+.table tr.is-selected {
+  background-color: #f3f2f2;
+  color: black;
+}

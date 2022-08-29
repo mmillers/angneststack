@@ -1,0 +1,33 @@
+<div class="modal" [ngClass]="{'is-active': students}">
+  <div class="modal-background"></div>
+  <div class="modal-card modal-mh">
+    <header class="modal-card-head">
+        <p class="modal-card-title"> Matricular Estudantes </p>
+        <button class="delete" aria-label="close" (click)="close()"></button>
+    </header>
+    <section class="modal-card-body">
+      <div class="list">
+        <div class="list-item">
+          <div
+            *ngFor="let student of students; let i = index;"
+            class="list-item-content is-flex is-justify-content-flex-start is-align-items-center m-3"
+          >
+            <div class="list-item-controls m-1">
+              <div class="buttons">
+                <button class="button is-success is-inverted" (click)="add(student)">
+                  <span class="icon is-small">
+                    <i class="fas fa-plus"></i>
+                  </span>
+                </button>
+              </div>
+            </div>
+            <div class="list-item-title">  {{ student.name }} </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="modal-card-foot">
+     <app-button [showCancel]="false" (saveEventEmitter)="save()" ></app-button>
+    </footer>
+  </div>
+</div>

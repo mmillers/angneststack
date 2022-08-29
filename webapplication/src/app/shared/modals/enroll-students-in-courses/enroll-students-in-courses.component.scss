@@ -1,0 +1,63 @@
+.modal-card {
+  overflow: auto;
+}
+
+.modal-mh {
+  max-height: 50vh;
+}
+
+.checkbox {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+}
+
+.checkbox+label {
+  position: relative;
+  font-size: 15px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  height: 22px;
+  color: rgb(0, 0, 0);
+}
+
+.checkbox+label::before {
+  content: " ";
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 3px;
+  width: 18px;
+  height: 18px;
+  background-color: white;
+  border-width: 2px;
+  border-style: double;
+  border-color: rgb(0, 0, 0);
+  border-radius: 3px;
+  box-shadow: rgba(42, 42, 42, 0.7) 0px 0px 0px 0px;
+}
+
+.checkbox:checked+label::after {
+  content: " ";
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NDggNTEyIj48cGF0aCBmaWxsPSIjMDQ3N2I1IiBkPSJNMCA5NkMwIDYwLjY1IDI4LjY1IDMyIDY0IDMySDM4NEM0MTkuMyAzMiA0NDggNjAuNjUgNDQ4IDk2VjQxNkM0NDggNDUxLjMgNDE5LjMgNDgwIDM4NCA0ODBINjRDMjguNjUgNDgwIDAgNDUxLjMgMCA0MTZWOTZ6Ii8+PC9zdmc+");
+  background-repeat: no-repeat;
+  background-size: 12px 12px;
+  background-position: center center;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 0px;
+  left: -2px;
+  top: 0;
+  text-align: center;
+  background-color: transparent;
+  font-size: 10px;
+  height: 22px;
+  width: 22px;
+}
